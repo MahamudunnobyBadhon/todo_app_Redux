@@ -1,27 +1,27 @@
 import {
-  ADD_TODO,
+  ADD_TO_DO,
   COLOR,
   COMPLETE,
   COMPLETE_ALL,
-  DELETE_ALL,
-  DELETE_TODO,
+  DELETE_ALL_COMPLETED,
+  DELETE_TO_DO,
 } from "./actionType";
 
 export const addToDo = (text) => {
   return {
-    type: ADD_TODO,
+    type: ADD_TO_DO,
     payload: text,
   };
 };
 
 export const deleteToDo = (todoId) => {
   return {
-    type: DELETE_TODO,
+    type: DELETE_TO_DO,
     payload: todoId,
   };
 };
 
-export const color = (todoId, color) => {
+export const colorChange = (todoId, color) => {
   return {
     type: COLOR,
     payload: {
@@ -31,21 +31,21 @@ export const color = (todoId, color) => {
   };
 };
 
-export const completed = (todoId) => {
+export const completeATask = (todoId) => {
   return {
     type: COMPLETE,
     payload: todoId,
   };
 };
 
-export const completedAll = () => {
+export const completeAllTask = () => {
   return {
     type: COMPLETE_ALL,
   };
 };
 
-export const clearAll = () => {
+export const clearAllCompleted = () => {
   return {
-    type: DELETE_ALL,
+    type: DELETE_ALL_COMPLETED,
   };
 };
