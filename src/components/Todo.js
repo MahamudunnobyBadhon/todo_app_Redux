@@ -5,7 +5,6 @@ import { colorChange, completeATask, deleteToDo } from "../redux/todo/action";
 export default function Todo({ d }) {
   const { completed, id, text, color } = d;
   const dispatch = useDispatch();
-  console.log({ color });
 
   const handleCompleteChange = (todoId) => {
     dispatch(completeATask(todoId));
@@ -16,8 +15,6 @@ export default function Todo({ d }) {
   };
 
   const handleTodoColorChange = (todoId, color) => {
-
-    console.log(todoId, color);
     dispatch(colorChange(todoId, color));
   };
   return (
