@@ -1,8 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 import { colorFilter, taskFilter } from "../redux/filter/action";
 
+const getCompletedTask = (todos) => {
+  const length = todos.filter((todo) => !todo.completed).length ;
+  console.log({ length });
+  switch (length) {
+    case 0: {
+      return "No task left";
+    }
+
+    case 1: {
+      return "1 task";
+    }
+
+    default:
+      return `${length} tasks`;
+  }
+};
+
 export default function Footer() {
   const { status, colors } = useSelector((state) => state.filter);
+  const todos = useSelector((state) => state.todo);
   const dispatch = useDispatch();
   const handleStatusChange = (text) => {
     dispatch(taskFilter(text));
@@ -16,9 +34,11 @@ export default function Footer() {
       dispatch(colorFilter(color, "add"));
     }
   };
+
+  
   return (
     <div className="mt-4 flex justify-between text-xs text-gray-500">
-      <p>2 tasks left</p>
+      <p>{getCompletedTask(todos)} left</p>
       <ul className="flex space-x-1 items-center text-xs">
         <li
           onClick={() => handleStatusChange("All")}
